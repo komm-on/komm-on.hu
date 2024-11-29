@@ -1,10 +1,11 @@
 <!doctype html>
-<html>
+<html lang="hu">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="generator" content="{{ eleventy.generator }}" />
+  <meta name="theme-color" content="hsl(125, 50%, 50%)" />
 
   <title>{% if title %}{{ title }} - {% endif %}Example Website</title>
 
@@ -15,7 +16,7 @@
     src="/assets/scripts/bootstrap.bundle.min.js"></script>
 </head>
 
-<body class="min-vh-100 d-flex flex-column">
+<body class="min-vh-100 d-flex flex-column bg-primary bg-opacity-75">
   <header>{% include "components/header.html" %}</header>
   <main class="flex-grow-1">{{ content }}</main>
   <footer>{% include "components/footer.html" %}</footer>

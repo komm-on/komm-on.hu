@@ -1,17 +1,17 @@
+@use "font";
+
 $color-mode-type: media-query;
-$font-family-base: "OpenSans";
-$primary: hsl(0, 50%, 50%);
+$font-family-base: "Raleway";
+$primary: hsl(125, 50%, 50%);
+// $primary: rgb(100, 210, 110);
+
+@import "colors";
 
 $bootstrap-icons-font-dir: "/assets/fonts";
 @import "pkg:bootstrap-icons/font/bootstrap-icons.scss";
 @import "pkg:bootstrap/scss/bootstrap.scss";
 
-@font-face {
-  font-family: "OpenSans";
-  src: url("/assets/fonts/OpenSans.ttf");
-}
-
-// Add extra `text-wrap` option not provided by bootstrap
+// Extra `text-wrap` option not provided by bootstrap
 
 .text-wrap-balance {
   text-wrap: balance;
@@ -39,8 +39,40 @@ blockquote::before {
   font-size: 30px;
 }
 
-// Active link in navigation bar
+// Hovered and active links in the navigation bar
 
-.nav-link.active {
-  @extend .border-bottom, .border-4, .border-primary;
+.nav-link {
+  @extend .border-primary, .border-4;
+
+  @include media-breakpoint-down(md) {
+    & {
+      border-left-style: solid;
+      padding-left: 0.5rem;
+      // margin-left: -0.5rem;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    & {
+      border-bottom-style: solid;
+    }
+  }
+
+  --bs-border-opacity: 0;
+
+  &:hover {
+    @extend .border-opacity-25;
+  }
+
+  &.active {
+    @extend .border-opacity-100;
+  }
+}
+
+// Color inversion utility for dark mode
+
+@include color-mode(dark) {
+  .dark-invert {
+    filter: invert(100%);
+  }
 }

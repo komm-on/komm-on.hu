@@ -1,0 +1,14 @@
+@import "pkg:bootstrap/scss/functions";
+@import "pkg:bootstrap/scss/variables";
+@import "pkg:bootstrap/scss/variables-dark";
+
+$custom-colors: (
+  "light-red": hsl(0, 85%, 75%),
+  "dark-red": hsl(0, 58%, 37%),
+  "light-blue": hsl(205, 65%, 67%),
+  "dark-blue": hsl(205, 73%, 29%),
+  "light-yellow": hsl(57, 44%, 49%),
+  "dark-yellow": hsl(53, 100%, 17%),
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);

@@ -1,4 +1,8 @@
+import * as path from 'path'
 import * as sass from 'sass'
+
+import { markdownItBootstrapAccordions } from './accordion.js'
+import { markdownItBootstrapContainers } from './container.js'
 
 const unwrapImagesFromParagraphs = ({ tokens }) => {
   for (let i = 1; i + 1 < tokens.length; i++) {
@@ -18,9 +22,10 @@ export default (eleventyConfig) => {
   eleventyConfig.addTemplateFormats('scss')
   eleventyConfig.addExtension('scss', {
     outputFileExtension: 'css',
-    compile: (inputContent) => (_data) =>
+    compile: (inputContent, inputPath) => (_data) =>
       sass.compileString(inputContent, {
         importers: [new sass.NodePackageImporter()],
+        loadPaths: [path.parse(inputPath).dir || "."]
       }).css,
   })
 
@@ -38,14 +43,16 @@ export default (eleventyConfig) => {
     // Set default class for images and wrap them into a figure with a caption
     md.renderer.rules.image = (tokens, idx, options, env, self) => {
       tokens[idx].attrJoin('class', 'img-fluid')
-      return `
-        <figure class="figure">
-          ${self.renderToken(tokens, idx, options, env, self)}
-          <figcaption class="figure-caption text-center">
-            ${tokens[idx].attrGet('title') ?? ''}
-          </figcaption>
+
+      const title = tokens[idx].attrGet('title')
+      const image = self.renderToken(tokens, idx, options, env, self)
+
+      return title ? `
+        <figure class="figure w-100 text-center">
+          ${image}
+          <figcaption class="figure-caption text-center">${title}</figcaption>
         </figure>
-      `
+      ` : image
     }
 
     // Get rid of the invalid paragraphs and put images at the top level
@@ -53,12 +60,15 @@ export default (eleventyConfig) => {
       'unwrap_images_from_paragraphs',
       unwrapImagesFromParagraphs,
     )
+
+    md.use(markdownItBootstrapAccordions)
+    md.use(markdownItBootstrapContainers)
   })
 
   // Create a filter for adding the `active` class to the currently visited link
   eleventyConfig.addFilter('isActive', function (value) {
-    const { url } = this.page
-    return (value === '/' ? url === '/' : url.startsWith(value)) ? 'active' : ''
+    const { url } = this.page ?? {}
+    return (value === '/' ? url === '/' : url?.startsWith?.(value)) ? 'active' : ''
   })
 
   // Copy the Bootstrap Icons font file
@@ -75,6 +85,14 @@ export default (eleventyConfig) => {
 
   // Copy all static assets
   eleventyConfig.addPassthroughCopy('src/assets')
+
+  eleventyConfig.addShortcode("nav-item-link", (title, link) => `
+    <li class="nav-item">
+      <a class="nav-link {{ '${link}' | isActive }}" href="${link}">
+        ${title}
+      </a>
+    </li>
+  `);
 
   return { dir: { input: 'src', layouts: 'layouts', output: 'dst' } }
 }

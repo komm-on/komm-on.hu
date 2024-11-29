@@ -1,6 +1,12 @@
-<nav class="navbar navbar-expand-sm bg-body-tertiary">
+<nav class="navbar navbar-expand-md bg-body-tertiary">
   <div class="container">
-    <a class="navbar-brand" href="/">Example</a>
+    <a class="navbar-brand" href="/">
+      <picture>
+        <source srcset="/assets/images/logo-dark.svg"
+          media="(prefers-color-scheme: dark)">
+        <img src="/assets/images/logo.svg" width="70px" />
+      </picture>
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
@@ -9,14 +15,66 @@
       id="navbarSupportedContent">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link {{ '/' | isActive }}" href="/">Home</a>
+          <a class="nav-link {{ '/' | isActive }} fw-bold" href="/">
+            Kezdőlap
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ '/blog' | isActive }}" href="/blog">Blog</a>
+          <a class="nav-link {{ '/ismerj-meg-minket' | isActive }} fw-bold"
+            href="/ismerj-meg-minket">
+            Ismerj meg minket!
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ '/about' | isActive }}" href="/about">About</a>
+          <a class="nav-link {{ '/szakmai-elet' | isActive }} fw-bold"
+            href="/szakmai-elet">
+            Szakmai élet
+          </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link {{ '/kozosseg' | isActive }} fw-bold"
+            href="/kozosseg">
+            Közösség
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ '/kapcsolat' | isActive }} fw-bold"
+            href="/kapcsolat">
+            Kapcsolat
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ '/blog' | isActive }} fw-bold" href="/blog">
+            Blog
+          </a>
+        </li>
+
+        <!-- {%
+        render "components/nav-item-link.html",
+        href: "/kapcsolat", content: "Kapcsolat"
+        %}
+        {%
+        render "components/nav-item-link.html",
+        href: "/kapcsolat", content: "Kapcsolat"
+        %} -->
+        <!-- <li class="nav-item">
+          <a class="nav-link {{ '/kapcsolat' | isActive }}" href="/kapcsolat">
+            Kapcsolat
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link {{ '/kapcsolat' | isActive }}" href="/kapcsolat">
+            Kapcsolat
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ '/kapcsolat' | isActive }}" href="/kapcsolat">
+            Kapcsolat
+          </a>
+        </li> -->
+
+        <!-- {% nav-item-link "Blog", "/blog" %} -->
     </div>
   </div>
 </nav>

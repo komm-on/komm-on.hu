@@ -8,7 +8,11 @@ pagination:
   alias: posts
 ---
 
-<h2><i class="bi-book"></i> Posts</h2>
+<h2 class="d-flex align-items-center" style="gap: 1rem">
+  <i class="bi-arrow-down-short d-inline-block"
+    style="font-size: 10rem; margin: -3rem"></i>
+  <span>Bejegyzések</span>
+</h2>
 
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
   {%- for post in posts -%}
@@ -22,7 +26,7 @@ pagination:
       </div>
       <div class="card-body align-self-end flex-grow-0">
         <a href="{{ post.url }}" class="btn btn-outline-primary stretched-link">
-          Read »
+          Elolvasom »
         </a>
       </div>
     </div>
