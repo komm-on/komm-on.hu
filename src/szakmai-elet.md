@@ -173,7 +173,7 @@ közül a kommunikációs szakmák iránt érdeklődő hallgatók.
 - <i class="bi-mic"></i> Beszédtechnika
 - <i class="bi-brush"></i> Rasztergrafika kurzus
 - <i class="bi-vector-pen"></i> Vektorgrafika kurzus
-- <i class="bi-newspaper"></i> Rádiós műsorszerkesztés
+- <i class="bi-newspaper"></i> Újságírás és publicisztika
 - <i class="bi-three-dots"></i> ...
 
 :::
