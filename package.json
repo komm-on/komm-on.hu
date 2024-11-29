@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "init": "npm install",
+    "prestart": "rimraf dst",
+    "start": "eleventy --serve",
+    "prebuild": "rimraf dst",
+    "build": "eleventy"
+  },
+  "type": "module",
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "sass": "^1.77.6"
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.1"
+  }
+}

@@ -1,0 +1,60 @@
+---
+layout: main
+---
+
+<div class="container my-3">
+  <div class="row justify-content-center">
+    <div class="col-lg-9 col-xxl-8">
+      <h1>
+        {{ title }}
+        <span class="text-body-secondary fs-4">
+          ({{ date | date: "%Y. %m. %d." }})
+        </span>
+      </h1>
+      <img src="{{ cover }}" class="img-fluid" />
+      <div class="bg-body-tertiary p-5">
+        <p class="lead">{{ teaser }}</p>
+        {{ content }}
+      </div>
+
+      <div class="row mt-3">
+        <div class="col text-start">
+          {%
+            assign nextPost =
+              collections.blog-post | getNextCollectionItem
+          %}
+          {% if nextPost %}
+          <a
+            href="{{ nextPost.url }}"
+            class="
+              btn btn-outline-primary h-100
+              d-inline-flex align-items-center gap-1
+            "
+          >
+            <i class="bi-arrow-left"></i>
+            {{ nextPost.data.title }}
+          </a>
+          {% endif %}
+        </div>
+        <div class="col text-end">
+          {%
+            assign previousPost =
+              collections.blog-post | getPreviousCollectionItem
+          %}
+          {% if previousPost %}
+          <a
+            href="{{ previouusPost.url }}"
+            class="
+              btn btn-outline-primary h-100
+              d-inline-flex align-items-center gap-1
+            "
+          >
+            {{ previousPost.data.title }}
+            <i class="bi-arrow-right"></i>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

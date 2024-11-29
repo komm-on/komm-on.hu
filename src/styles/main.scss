@@ -1,0 +1,46 @@
+$color-mode-type: media-query;
+$font-family-base: "OpenSans";
+$primary: hsl(0, 50%, 50%);
+
+$bootstrap-icons-font-dir: "/assets/fonts";
+@import "pkg:bootstrap-icons/font/bootstrap-icons.scss";
+@import "pkg:bootstrap/scss/bootstrap.scss";
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("/assets/fonts/OpenSans.ttf");
+}
+
+// Add extra `text-wrap` option not provided by bootstrap
+
+.text-wrap-balance {
+  text-wrap: balance;
+}
+
+// Block quotes for articles
+
+blockquote {
+  @extend .position-relative,
+  .border-start, .border-4, .border-primary,
+  .ms-4, .ps-2;
+}
+
+blockquote::before {
+  content: '\F6B0';
+
+  position: absolute;
+  top: -12px;
+  left: -32px;
+
+  rotate: 180deg;
+
+  font-family: bootstrap-icons;
+  font-style: italic;
+  font-size: 30px;
+}
+
+// Active link in navigation bar
+
+.nav-link.active {
+  @extend .border-bottom, .border-4, .border-primary;
+}

@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content="{{ eleventy.generator }}" />
+
+  <title>{% if title %}{{ title }} - {% endif %}Example Website</title>
+
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link rel="stylesheet" type="text/css" href="/styles/main.css" />
+
+  <script type="text/javascript"
+    src="/assets/scripts/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="min-vh-100 d-flex flex-column">
+  <header>{% include "components/header.html" %}</header>
+  <main class="flex-grow-1">{{ content }}</main>
+  <footer>{% include "components/footer.html" %}</footer>
+</body>
+
+</html>
