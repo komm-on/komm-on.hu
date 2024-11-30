@@ -2,7 +2,7 @@
 tags: blog-post
 layout: article
 date: 2024-11-29
-title: Zene ajánló
+title: Zeneajánló
 teaser: >
   Check it out 
 cover: /assets/images/Smiley-47099.jpg
